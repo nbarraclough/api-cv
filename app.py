@@ -120,4 +120,4 @@ def all():
 
 if __name__ == '__main__':
     #defining localhost and the port to use - not sure if this needs to be changed?
-    app.run(host='0.0.0.0', port=105)
+    app.run(host='0.0.0.0', port=80)
