@@ -6,7 +6,7 @@ app = Flask(__name__)
 ##be lazy and use tuples for now
 ##todo: shift this to a sqlite db so I can accept POST requests
 
-bio = [
+bio_data = [
 	{
 		'preferred name': 'Nick Barraclough',
 		'pronouns': 'he/him',
@@ -30,9 +30,9 @@ outside_data = {
 ]
 }
 
-references = {'references': 'Available on request.'}
+references_data = {'references': 'Available on request.'}
 
-experience1 = [
+experience_data = [
 	{
 		'id':'1',
 		'company': 'Figured',
@@ -89,14 +89,14 @@ def welcome():
 @app.route('/bio/')
 def personalinfo():
     # return a blob
-    return jsonify({'bio': bio}
+    return jsonify({'bio': bio_data}
     	)
 
 
 @app.route('/experience/')
 def company():
     # return a blob
-    return jsonify({'experience': experience1})
+    return jsonify({'experience': experience_data})
     
 
 @app.route('/outside/')
@@ -108,10 +108,10 @@ def outside():
 def all():
     # return a blob
     return {
-    'bio': bio,
-    'experience': experience1,
+    'bio': bio_data,
+    'experience': experience_data,
     'outside': outside_data,
-    'references': references
+    'references': references_data
 
     }
   
