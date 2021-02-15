@@ -8,7 +8,9 @@
     "watch": "webpack --mode development --watch",
     "prod": "webpack --mode production",
     "build": "webpack --mode production",
-    "hot": "webpack serve --mode development"
+    "hot": "webpack serve --mode development",
+    "start": "node app.js"
+
   },
   "repository": {
     "type": "git",
