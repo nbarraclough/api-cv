@@ -82,7 +82,7 @@ experience1 = [
 @app.route('/')
 def welcome():
     # return a blob
-    return jsonify({'welome': 'There are three endpoints available: ~/personalinfo, ~/experience, ~/outside'})
+    return jsonify({'welome': 'There are three endpoints available: ~/all, ~/bio, ~/experience, ~/outside'})
 
 
 @app.route('/bio/')
