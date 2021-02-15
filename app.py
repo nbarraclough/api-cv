@@ -103,7 +103,7 @@ def welcome():
 	log('welcome')
 
 	# return a blob
-	return jsonify({'welome': 'There are three endpoints available: ~/all, ~/bio, ~/experience, ~/outside'})
+	return jsonify({'welome': 'There are four endpoints available: /bio, /experience, /outside, and /all to see them combine'})
 
 
 
