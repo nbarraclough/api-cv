@@ -39,19 +39,6 @@ module.exports = {
             path.resolve('./src/scss'),
         ]
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new VueLoaderPlugin(),
-        new HtmlWebpackPlugin({
-          title: "Webpack Output",
-        }),
-         new CopyPlugin({
-          patterns: [
-            { from: "./src/index.html", to: "test.html" },
-
-          ],
-        }),
-    ],
      module: {
          rules: [
              {
@@ -61,7 +48,18 @@ module.exports = {
 
 
          ]
-     }
+     },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new VueLoaderPlugin(),
+         new CopyPlugin({
+          patterns: [
+            { from: "./src/index.html", to: "index.html" },
+
+          ],
+        }),
+    ],
+
 };
 
 

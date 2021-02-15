@@ -1,19 +1,22 @@
 <template>
-<div>
-  <h1>Welcome Dick Head</h1>
-  {{ message }}
+  <div>
+    <h1 class="message">Welcome Dick Head</h1>
+    {{ message }} <br>
+    {{ message_two }}
 
-  <button @click="doSomethingClever()">Click Me</button>
-</div>
+    <button @click="doSomethingClever()">Click Me</button>
+
+  </div>
 </template>
-<style>
 
-</style>
 <script>
+
 export default {
        data() {
             return {
               message:'This is a test message',
+              message_two:'This is message two',
+
             }
         },
         mounted() {
