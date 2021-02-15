@@ -18,7 +18,7 @@ bio = [
 	}
 ]
 
-outside = [
+outside_data = [
 	{
 		'description': 'These are some of the things that I do outside of work',
 		'volunteering': 'NHS volunteer for the Excel vaccination centre.',
@@ -102,8 +102,7 @@ def company():
 @app.route('/outside/')
 def outside():
     # return a blob
-    return jsonify({'outside': outside}
-    	)
+    return jsonify({'outside': outside_data})
 
 @app.route('/all')
 def all():
