@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import os
 from flask import Flask, jsonify
 app = Flask(__name__)
@@ -18,22 +19,18 @@ bio = [
 	}
 ]
 
-outside = [
-	{
-		'description': 'These are some of the things that I do outside of work',
-		'volunteering': 'NHS volunteer for the Excel vaccination centre.',
-		'hiking': 'Great at getting lost in the outdoors.',
-		'kareoke': 'Unskilled singer, make up for this with too much enthusiasm.',
-		'humour': 'Make plenty of puns and dad jokes.',
-		'coding': 'Okay at SQL, learning Python.'
-		}
+outside_data = {
+'description': 'These are some of the things that I do outside of work',
+'things' : [
+ {'volunteering': 'NHS volunteer for the Excel vaccination centre.'},
+ {'hiking': 'Great at getting lost in the outdoors.'},
+ {'kareoke': 'Unskilled singer, make up for this with too much enthusiasm.'},
+ {'humour': 'Make plenty of puns and dad jokes.'},
+ {'coding': 'Okay at SQL, learning Python.'}
 ]
+}
 
-reference = [
-	{
-		'references': 'Available on request.'
-	}
-]
+references = {'references': 'Available on request.'}
 
 experience1 = [
 	{
@@ -43,12 +40,16 @@ experience1 = [
 		'role': 'Partner Success Manager UK & Ireland',
 		'product': 'Fintech for agri, building financial management tools to answer the now/where/how on farm to drive profitability.',
 		'data': 'Integrating financial (Xero) and production (BCMS, ICBF, AgriWebb, MyJohnDeere) operations for over 30,000 farms worldwide.',
-		'summary': ''''- Large scale pilots and implementations of Figured across accountants and banks in an emerging market.
-- Consultative approach to involving stakeholders, from top to bottom of a client’s business.
-- Building product usage dashboards in Kibana for proactive engagement with clients and quarterly reviews.
-- Scoping and assisting development of integrations with government APIs.
-- Collaborating closely with international sales, product and service teams for smooth handovers of projects.
-- Building sales enablement, training content and running one-to-many sessions in person and online.'''''
+		'summary': [
+		"- Large scale pilots and implementations of Figured across accountants and banks in an emerging market.",
+		"- Consultative approach to involving stakeholders, from top to bottom of a client’s business.",
+		"- Building product usage dashboards in Kibana for proactive engagement with clients and quarterly reviews.",
+		"- Scoping and assisting development of integrations with government APIs. ",
+		"- Collaborating closely with international sales, product and service teams for smooth handovers of projects.",
+		"- Building smooth sales enablement, training content and running one-to-many sessions in person and online."
+
+
+		]     
 	},
 {
 		'id':'2',
@@ -95,26 +96,26 @@ def personalinfo():
 @app.route('/experience/')
 def company():
     # return a blob
-    return jsonify({'experience': experience1}
-    	)
+    return jsonify({'experience': experience1})
     
 
 @app.route('/outside/')
 def outside():
     # return a blob
-    return jsonify({'outside': outside}
-    	)
+    return outside_data
 
 @app.route('/all')
 def all():
     # return a blob
-    return jsonify(
-    	{'bio': bio}, 
-    	{'experience': experience1},
-    	##why does this suddenly break after you enter a third one?
-    	{'outside': outside},
-    	{'references': references}
-    )
+    return {
+    'bio': bio,
+    'experience': experience1,
+    'outside': outside_data,
+    'references': references
+
+    }
+  
+    
 
 
 
