@@ -1,10 +1,23 @@
 #!/usr/bin/python3
 import os
+from datetime import datetime
+import json
+
 from flask import Flask, jsonify
 app = Flask(__name__)
 
 ##be lazy and use tuples for now
 ##todo: shift this to a sqlite db so I can accept POST requests
+
+
+def log(endpoint):
+	now = datetime.now()
+
+	logFile = './log.txt'
+
+	logLine = str(now) + ':::' + endpoint + '\n'
+	with open(logFile, 'a+') as myfile:
+		myfile.write(logLine)
 
 bio_data = [
 	{
@@ -82,41 +95,43 @@ experience_data = [
 
 @app.route('/')
 def welcome():
-    # return a blob
-    return jsonify({'welome': 'There are three endpoints available: ~/all, ~/bio, ~/experience, ~/outside'})
+	log('welcome')
+
+	# return a blob
+	return jsonify({'welome': 'There are three endpoints available: ~/all, ~/bio, ~/experience, ~/outside'})
 
 
 @app.route('/bio/')
 def personalinfo():
-    # return a blob
-    return jsonify({'bio': bio_data}
-    	)
+	log('bio')
+
+	# return a blob
+	return jsonify({'bio': bio_data})
 
 
 @app.route('/experience/')
 def company():
-    # return a blob
-    return jsonify({'experience': experience_data})
-    
+	log('company')
+	# return a blob
+	return jsonify({'experience': experience_data})
+
 
 @app.route('/outside/')
 def outside():
-    # return a blob
-    return outside_data
+	log('outside')
+	# return a blob
+	return outside_data
 
 @app.route('/all')
 def all():
-    # return a blob
-    return {
-    'bio': bio_data,
-    'experience': experience_data,
-    'outside': outside_data,
-    'references': references_data
-
-    }
+		log('all')
+		return {
+		'bio': bio_data,
+		'experience': experience_data,
+		'outside': outside_data,
+		'references': references_data
+		}
   
-    
-
 
 
 if __name__ == '__main__':
