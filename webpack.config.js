@@ -8,7 +8,7 @@ module.exports = {
     entry: {
         main: path.resolve(__dirname, './src/app.js'),
     },
-    mode: 'development',
+    // mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
         publicPath: "/",
