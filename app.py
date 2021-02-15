@@ -111,7 +111,7 @@ def welcome():
 
 @app.route('/bio/')
 def personalinfo():
-	logging.info('bio')
+	logger.info('bio')
 
 	# return a blob
 	return jsonify({'bio': bio_data})
@@ -119,20 +119,20 @@ def personalinfo():
 
 @app.route('/experience/')
 def company():
-	logging.info('company')
+	logger.info('company')
 	# return a blob
 	return jsonify({'experience': experience_data})
 
 
 @app.route('/outside/')
 def outside():
-	logging.info('outside')
+	logger.info('outside')
 	# return a blob
 	return outside_data
 
 @app.route('/all')
 def all():
-	logging.info('all')
+	logger.info('all')
 	return {
 		'bio': bio_data,
 		'experience': experience_data,
