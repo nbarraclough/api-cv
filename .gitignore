@@ -1,3 +1,6 @@
 *~
+.idea
 config.py
 node_modules
+venv
+public

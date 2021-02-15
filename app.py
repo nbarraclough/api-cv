@@ -29,7 +29,7 @@ outside = [
 		}
 ]
 
-reference = [
+references = [
 	{
 		'references': 'Available on request.'
 	}
