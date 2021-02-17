@@ -6,18 +6,20 @@ import json
 from flask import Flask, jsonify
 app = Flask(__name__)
 
+import logging
+from logging.handlers import TimedRotatingFileHandler
+
+formatter = logging.Formatter("%(asctime)s - %(message)s")
+handler = TimedRotatingFileHandler('log/flask_server.log', when="midnight", interval=1, encoding='utf8')
+handler.suffix = "%Y-%m-%d"
+handler.setFormatter(formatter)
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logger.addHandler(handler)
+
 ##be lazy and use tuples for now
 ##todo: shift this to a sqlite db so I can accept POST requests
 
-
-def log(endpoint):
-	now = datetime.now()
-
-	logFile = './log.txt'
-
-	logLine = str(now) + ':::' + endpoint + '\n'
-	with open(logFile, 'a+') as myfile:
-		myfile.write(logLine)
 
 bio_data = [
 	{
@@ -100,7 +102,7 @@ experience_data = [
 
 @app.route('/')
 def welcome():
-	log('welcome')
+	logger.info('welcome')
 
 	# return a blob
 	return jsonify({'welome': 'There are four endpoints available: /bio, /experience, /outside, and /all to see them combine'})
@@ -109,7 +111,7 @@ def welcome():
 
 @app.route('/bio/')
 def personalinfo():
-	log('bio')
+	logger.info('bio')
 
 	# return a blob
 	return jsonify({'bio': bio_data})
@@ -117,21 +119,21 @@ def personalinfo():
 
 @app.route('/experience/')
 def company():
-	log('company')
+	logger.info('company')
 	# return a blob
 	return jsonify({'experience': experience_data})
 
 
 @app.route('/outside/')
 def outside():
-	log('outside')
+	logger.info('outside')
 	# return a blob
 	return outside_data
 
 @app.route('/all')
 def all():
-		log('all')
-		return {
+	logger.info('all')
+	return {
 		'bio': bio_data,
 		'experience': experience_data,
 		'outside': outside_data,
