@@ -14,4 +14,7 @@ In the end I didn't join the Implementation Engineering team, and joined Custome
 
 # What would I do differently?
 
-Probably not this, but like I said it was fun to write! I think I'd also send over a Postman collection to make it easier to navigate.
+- Structure it differently
+- Send over a Postman collection
+- Use a better landing page to guide visitors to explore the endpoints
+- Have some docs
